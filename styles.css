@@ -1,0 +1,100 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background: azure;
+}
+
+.calculator {
+    background: #3a4452;
+    padding: 20px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    max-width: 50vw;
+}
+
+.calculator button {
+    border: 0;
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    box-shadow: -8px -8px 15px rgba(255, 255, 255, 0.1), 5px 5px 15px rgba(0, 0, 0, 0.2);
+    background: transparent;
+    font-size: 20px;
+    cursor: pointer;
+    margin: 10px;
+}
+
+form {
+    display: flex;
+    justify-content: flex-end;
+    margin: 30px 0 20px;
+}
+
+form input {
+    flex: 1;
+    font-size: 60px;
+    text-align: right;
+    box-shadow: none;
+    border-radius: 5px;
+    border: none;
+    outline: 0;
+    height: 60px;
+    max-width: 23vw;
+    margin: 0 auto;
+}
+
+div #zero {
+    width: 145px;
+}
+
+.operand {
+    color: #fff;
+}
+
+.operand:active {
+    background-color: #5b6e89;
+}
+
+.operator {
+    color: #FF8F1F;
+}
+
+.operator:focus {
+    background-color: #676f7b;
+}
+
+.utils {
+    color: dodgerblue;
+}
+
+.utils:active {
+    background-color: #b4c5df ;
+}
+
+/* Media Queries */
+@media (min-width: 750px) and (max-width: 1400px) {
+    
+    form input {
+        min-width: 310px;
+    }
+}
+@media (min-width: 390px) and (max-width: 750px) {
+    
+    form input {
+        min-width: 310px;
+    }
+    
+    .calculator {
+        min-width: 55vw;
+        max-width: 60vw;
+    }
+}
