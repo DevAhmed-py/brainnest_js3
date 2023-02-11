@@ -1,10 +1,3 @@
-window.addEventListener('keydown', function(e){
-    const key = document.querySelector(`button[data-key='${e.code}']`);
-    if(key) {
-        key.click();
-    }
-});
-
 let displayVal = '0';
 
 const displayUpdate = () => {
@@ -151,7 +144,7 @@ const sign = (num) => {
     displayVal = (num * -1).toString();
 }
 
-function clearDisplay() {
+const clearDisplay = () => {
     displayVal = '0';
     firstNum = null;
     secondNum = null;
@@ -159,3 +152,10 @@ function clearDisplay() {
     secondOperator = null;
     resultValue = null;
 }
+
+window.addEventListener('keydown', function(e){
+    const key = document.querySelector(`button[data-key='${e.code}']`);
+    if(key) {
+        key.click();
+    }
+});
