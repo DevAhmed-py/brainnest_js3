@@ -1,6 +1,8 @@
 window.addEventListener('keydown', function(e){
-    const key = document.querySelector(`button[data-key='${e.KeyboardEvent.code}']`);
-    key.click();
+    const key = document.querySelector(`button[data-key='${e.code}']`);
+    if(key) {
+        key.click();
+    }
 });
 
 let displayVal = '0';
@@ -32,10 +34,11 @@ const buttonClick = () => {
             } else if(buttons[i].classList.contains('sign')) {
                 sign(displayVal);
                 displayUpdate();
-            } else if(buttons[i].classList.contains('clear'))
+            } else if (buttons[i].classList.contains('clear')) 
                 clearDisplay();
                 displayUpdate();
         }
+            
     )}
 }
 buttonClick();
