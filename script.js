@@ -1,45 +1,31 @@
 let displayVal = '0';
-
-const displayUpdate = () => {
-    const display = document.querySelector('.display');
-    display.innerText = displayVal;
-    if(displayVal.length > 10) {
-        display.innerText = displayVal.substring(0, 10);
-    }
-}
-displayUpdate();
-
-const buttons = document.querySelectorAll('button');
-const buttonClick = () => {
-    for(let i = 0; i < buttons.length; i++) {
-        buttons[i].addEventListener('click', () => {
-            if(buttons[i].classList.contains('operand')) {
-                operand(buttons[i].value);
-                displayUpdate();
-            } else if(buttons[i].classList.contains('operator')) {
-                Operator(buttons[i].value);
-            } else if(buttons[i].classList.contains('equals')) {
-                equals();
-                displayUpdate();
-            } else if(buttons[i].classList.contains('percent')) {
-                percent(displayVal);
-                displayUpdate();
-            } else if(buttons[i].classList.contains('sign')) {
-                sign(displayVal);
-                displayUpdate();
-            } else if (buttons[i].classList.contains('clear')) 
-                clearDisplay();
-                displayUpdate();
-        }
-            
-    )}
-}
-buttonClick();
-
 let firstNum = null;
 let secondNum = null;
 let firstOperator = null;
 let secondOperator = null;
+let resultValue = null;
+const buttons = document.querySelectorAll('button');
+
+buttons.forEach(button => button.addEventListener('click', function() {
+        if(button.classList.contains('operand')) {
+            operand(button.value);
+            displayUpdate();
+        } else if(button.classList.contains('operator')) {
+            Operator(button.value);
+        } else if(button.classList.contains('equals')) {
+            equals();
+            displayUpdate();
+        } else if(button.classList.contains('percent')) {
+            percent(displayVal);
+            displayUpdate();
+        } else if(button.classList.contains('sign')) {
+            sign(displayVal);
+            displayUpdate();
+        } else if (button.classList.contains('clear')) 
+            clearDisplay();
+            displayUpdate();
+    }
+))
 
 const operand = (num) => {
     if(firstOperator === null) {
@@ -59,7 +45,14 @@ const operand = (num) => {
     }
 }
 
-let resultValue = null;
+const displayUpdate = () => {
+    const display = document.querySelector('.display');
+    display.innerText = displayVal;
+    if(displayVal.length > 10) {
+        display.innerText = displayVal.substring(0, 10);
+    }
+}
+displayUpdate();
 
 const Operator = (input) => {
     if(firstOperator != null && secondOperator === null) {
@@ -153,9 +146,19 @@ const clearDisplay = () => {
     resultValue = null;
 }
 
-window.addEventListener('keydown', function(e){
-    const key = document.querySelector(`button[data-key='${e.code}']`);
-    if(key) {
-        key.click();
+// Keyboard Events
+
+document.addEventListener("keydown", function(event) {
+    numb = ['1','2','3','4','5','6','7','8','9','0']
+    if (numb.includes(event.key)) {
+        operand(event.key)
+        displayUpdate()
     }
-});
+})
+
+// window.addEventListener('keydown', function(e){
+//     const key = document.querySelector(`button[data-key='${e.code}']`);
+//     if(key) {
+//         key.click();
+//     }
+// });
